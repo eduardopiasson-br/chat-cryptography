@@ -19,7 +19,7 @@ public class Servidor {
 
 	public void executa() throws IOException  {
 		try(ServerSocket servidor = new ServerSocket(this.porta)){
-			System.out.println("Porta 12345 aberta!");
+			System.out.println("O servidor está Online!");
 	
 			while (true) {
 				Socket cliente = servidor.accept();
@@ -34,7 +34,7 @@ public class Servidor {
 		}
 	}
 	
-	public static String encriptar(int chave, String texto) {
+	/*public static String encriptar(int chave, String texto) {
 		StringBuilder textoCifrado = new StringBuilder();
 		int tamanhoTexto = texto.length();
 		
@@ -48,7 +48,7 @@ public class Servidor {
 			textoCifrado.append((char) letraCifradaASCII);
 		}
 		return textoCifrado.toString();
-	}
+	}*/
 
 	public void distribuiMensagem(Socket clienteQueEnviou, String msg) {
 		for (Socket cliente : this.clientes) {
@@ -76,8 +76,8 @@ public class Servidor {
 					} else if(msg.contains("puto")) {
 						ps.println("Palavrão é proibido");
 					} else {
-						//ps.println("msg");
-						ps.println(encriptar(1,msg));
+						ps.println(msg);
+						//ps.println(encriptar(1,msg));
 					}
 					
 				} catch (IOException e) {
